@@ -15,11 +15,19 @@ public class Task1_YahooTitleVerification {
 
         driver.manage().window().maximize();
 
-        String getTitle = driver.getTitle();
+        String expectedTitle = "Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos";
 
-        System.out.println("getTitle = " + getTitle);
+        String actualTitle = driver.getTitle();
 
+       // System.out.println("getTitle = " + getTitle);
 
+        if (actualTitle.equals(expectedTitle)) {
+            System.out.println("passed");
+        }else {
+            System.out.println("title not as expected");
+        }
+
+        driver.close();
 
 
     }
