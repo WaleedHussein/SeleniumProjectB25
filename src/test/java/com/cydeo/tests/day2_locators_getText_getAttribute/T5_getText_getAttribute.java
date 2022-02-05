@@ -33,7 +33,7 @@ public class T5_getText_getAttribute {
         String expectedPlaceHolder = "first name";
         String actualPlaceHolder = firstNameInput.getAttribute("placeholder");
 
-        if (actualHeaderText.equals(expectedHeaderText))
+        if (actualPlaceHolder.equals(expectedPlaceHolder))
             System.out.println("place holder verified");
         else System.out.println("place holder failed");
 
