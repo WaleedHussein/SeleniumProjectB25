@@ -47,11 +47,16 @@ public class T1_xpath_cssSelector_practice {
         WebElement inputBox_ex2 = driver.findElement(By.xpath("//input[contains(@pattern, 'a-z')]"));
 
 
-
         //e. “Retrieve password” button
+
+        WebElement retrievePasswordBtn = driver.findElement(By.xpath("//button[@id='form_submit']"));
+
         //f. “Powered by Cydeo text
+        WebElement poweredBy = driver.findElement(By.xpath("//div[@style='text-align: center;']"));
+
         //4. Verify all web elements are displayed.
-
-
+        System.out.println(inputBox_ex1.isDisplayed());
+        System.out.println("header_ex1.isDisplayed() = " + header_ex1.isDisplayed());
+        driver.close();
     }
 }
