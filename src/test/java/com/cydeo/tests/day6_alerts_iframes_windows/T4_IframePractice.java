@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -27,13 +28,19 @@ public class T4_IframePractice {
     @Test
     public void alert_test1()  {
 
-        driver.switchTo().frame("mce_0_ifr");
+       // driver.switchTo().frame("mce_0_ifr");
+        //another method
+        //driver.switchTo().frame(0);
+        //locate as webelement
+
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@allowtransparency='true']")));
 
         WebElement yourContentGoesHereText = driver.findElement(By.xpath("//p"));
         Assert.assertTrue(yourContentGoesHereText.isDisplayed());
 
+        driver.switchTo().parentFrame();
 
-
+        WebElement headerText = driver.findElement(By.xpath("//h3"));
 
         //TC #4: Iframe practice
     //
@@ -46,4 +53,10 @@ public class T4_IframePractice {
     //5. Assert: “An iFrame containing the TinyMCE WYSIWYG Editor”
 
 }
+
+@AfterMethod
+    public void teardown(){
+        driver.close();
+}
+
 }
