@@ -42,6 +42,8 @@ public class T4_IframePractice {
 
         WebElement headerText = driver.findElement(By.xpath("//h3"));
 
+        Assert.assertTrue(headerText.isDisplayed());
+
         //TC #4: Iframe practice
     //
     //1. Create a new class called: T4_Iframes
