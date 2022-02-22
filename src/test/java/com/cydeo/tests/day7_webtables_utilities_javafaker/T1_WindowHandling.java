@@ -1,13 +1,12 @@
 package com.cydeo.tests.day7_webtables_utilities_javafaker;
 
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class T1_WindowHandling {
@@ -29,22 +28,7 @@ public class T1_WindowHandling {
          ((JavascriptExecutor) driver).executeScript("window.open('https://etsy.com','_blank');");
          ((JavascriptExecutor) driver).executeScript("window.open('https://facebook.com','_blank');");
 
-        Set<String> allWindowHandles = driver.getWindowHandles();
-
-        for (String each: driver.getWindowHandles()) {    //iter is a shortcut for for:each loop
-            driver.switchTo().window(each);
-            System.out.println("current url " + driver.getCurrentUrl());
-
-            if (driver.getCurrentUrl().contains("etsy")){
-                break;
-            }
-
-        }
-
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Etsy";
-
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
+        BrowserUtils.switchWindowAndVerify(driver,"etsy","Etsy");
 
     }
 
